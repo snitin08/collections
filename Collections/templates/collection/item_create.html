@@ -1,0 +1,22 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    {% if form.instance.pk %}
+        Update Item
+    {% else %}
+        Create Item
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+
+    <div>
+        <form method="POST" style="text-align: center;" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="SUBMIT" class="btn btn-primary btn-lg">
+        </form>
+    </div>
+
+
+{% endblock %}

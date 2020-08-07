@@ -1,0 +1,17 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    Update Item
+{% endblock %}
+
+{% block body_block %}
+
+    <form method="POST" style="text-align: center;" enctype='multipart/form-data'> 
+    <!-- Security token by Django -->
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <p><input type="submit" value="Yes" class="btn btn-danger btn-lg"/> </p>
+        
+    </form> 
+
+{% endblock %}

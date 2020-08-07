@@ -1,0 +1,17 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    Delete Collection
+{% endblock %}
+
+{% block body_block %}
+
+    <form method="POST" style="text-align: center;"> 
+    <!-- Security token by Django -->
+        {% csrf_token %} 
+        <p><h1>Are you want to delete this Collection ? </h1></p>
+        <input type="submit" value="Yes" class="btn btn-danger btn-lg"/>
+        <a href="/" class="btn btn-success btn-lg">Cancel </a>
+    </form> 
+
+{% endblock %}

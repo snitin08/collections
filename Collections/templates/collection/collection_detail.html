@@ -1,0 +1,42 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    {{collection.name}}
+{% endblock %}
+
+{% block body_block %}
+    <div class="container" style="text-align: center;">
+            
+        <a href="{% url 'collection:item_create' collection_id=collection.id %}" class="btn btn-primary">
+            Add Item
+        </a>
+        
+    </div>
+    {% if collection_items %}
+        
+        <div class="container" style="text-align: center;">
+            
+            {% for item in collection_items %}
+                
+                <div class="jumbotron item-detail" style="text-align: center; margin: 10px;">
+                    <h1><a href="{% url 'collection:item_detail' collection_id=collection.id pk=item.id %}">{{item.item_name}}</a></h1>
+                    <a href="{% url 'collection:item_update' collection_id=collection.id pk=item.id %}" class="btn btn-warning btn-lg">
+                        Update
+                    </a>
+                    <a href="{% url 'collection:item_delete' collection_id=collection.id pk=item.id %}" class="btn btn-danger btn-lg">
+                        Delete
+                    </a>
+                </div>
+                   
+        {% endfor %}
+        </div>
+            
+        
+    {% else %}
+        <div class="jumbotron" style="text-align: center; color:red">
+            <h1> No items in {{collection.name}} </h1>
+        </div>
+    {% endif %}
+
+{% endblock %}
+

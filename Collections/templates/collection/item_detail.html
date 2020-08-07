@@ -1,0 +1,22 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    {{item.name}}
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="container" style="text-align: center;">
+        <div class="jumbotron">
+            <h1 class="display-3">{{item.item_name}}</h1>
+            <p class="lead"><a href="{{item.item_url}}">{{item.item_url}}</a></p>
+            <hr class="my-2">
+            
+            <p class="lead">
+                
+
+            </p>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    {% if form.instance.pk %}
+        Update Collectiom
+    {% else %}
+        Create collection
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+
+    <div>
+        <form method="POST" style="text-align: center;">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="SUBMIT" class="btn btn-primary btn-lg">
+        </form>
+    </div>
+
+{% endblock %}
