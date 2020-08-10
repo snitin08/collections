@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from collection.models import CollectionModel, CollectionItemModel
 from .forms import CollectionItemModelForm, CollectionModelForm
+from django.conf import settings
 # Create your views here.
 def index(request):
     collection_list = CollectionModel.objects.all()
@@ -17,6 +18,14 @@ def collectionDetailView(request,pk):
         }
     )
 
+def collectionSearchView(request):
+    method_dict = request.GET
+    query = method_dict.get('q', None) # method_dict['q']
+    print(query is '')
+    if query is not None:
+        collection_list = CollectionModel.objects.filter(name__icontains=query)
+        return render(request,"collection/collection_search.html",{"collection_list":collection_list})
+    return render(request,"collection/collection_search.html",{"collection_list":None})
 
 def collectionCreateView(request):
     if request.method == "POST":
@@ -52,7 +61,9 @@ def collectionDeleteView(request,pk):
 
 def itemDetailView(request,pk,collection_id):
     item = CollectionItemModel.objects.get(pk=pk)
-    return render(request,"collection/item_detail.html",{"item":item})
+    
+    return render(request,"collection/item_detail.html",{"item":item,"media_url":settings.MEDIA_URL})
+    
 
 def itemCreateView(request,collection_id):
     if request.method == "POST":

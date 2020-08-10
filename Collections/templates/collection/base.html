@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <title>
@@ -21,11 +23,20 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="navbar-nav">
-                <a class="navbar-brand" href="{% url 'collection:index' %}">Your Collections</a>
-                <a class="nav-item nav-link" href="#}"></a>
-                
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+            <div class="container">
+                <div class="navbar-nav mr-auto">
+                    <a class="navbar-brand" href="{% url 'collection:index' %}">Your Collections</a>
+                    <a class="nav-item nav-link" href="#}"></a>
+                    
+                </div>
+                <div class="text-right ml-auto">
+                    <form method="GET" action="{% url 'collection:collection_search' %}" class="form-inline mr-auto float-right">
+                        <input type="text" class="form-control mb-2 mr-sm-2 " name="q" placeholder="collection name" value="{{request.GET.q}}">
+                        <input type="submit" class="btn btn-dark btn btn-outline-success" 
+                        value="SEARCH">
+                    </form>
+                </div>  
             </div>
         </nav>
 

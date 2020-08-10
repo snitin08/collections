@@ -5,14 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <div class="row">
-        <div class="container col-lg-12 ml-auto mr-auto">
-            <form method="GET" action="collection_search.html" class="form-inline">
-                <input type="text" class="form-control mb-2 mr-sm-2" id="query" placeholder="collection name">
-                <input type="submit" value="SEARCH">
-            </form>
-        </div> 
-    </div>
+    
     <div class="container-fluid" style="text-align: center;">
         
         <a href="{% url 'collection:collection_create' %}" class="btn btn-primary">

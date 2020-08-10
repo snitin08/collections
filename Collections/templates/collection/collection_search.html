@@ -1,0 +1,34 @@
+{% extends 'collection/base.html' %}
+
+{% block title_block %}
+    Collections
+{% endblock %}
+
+{% block body_block %}
+    {% if request.GET.q is not '' %}
+        <div class="row">
+            <div class="col-md-8 col-sm-12 ml-auto mr-auto">
+                <h1> Search for <b>{{request.GET.q}}</b></h1>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if collection_list %}
+        <div class="container" style="text-align: center;">
+            {% for collection in collection_list %}
+            
+                <div class="jumbotron item-detail" style="text-align: center; margin:10px;">
+                    <h1><a href="{% url 'collection:collection_detail' pk=collection.id %}">{{collection.name}}</a></h1>
+                    <p><a href="{% url 'collection:collection_update' pk=collection.id %}" class="btn btn-warning btn-lg">Update</a></p>
+                    <a href="{% url 'collection:collection_delete' pk=collection.id %}" class="btn btn-danger btn-lg">Delete</a>
+                </div>
+            
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="jumbotron" style="text-align: center; color:red">
+            No Collections found
+        </div>
+    {% endif %}
+
+{% endblock %}

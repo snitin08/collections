@@ -9,6 +9,9 @@
     <div class="container" style="text-align: center;">
         <div class="jumbotron">
             <h1 class="display-3">{{item.item_name}}</h1>
+            {% if item.item_image %}
+                <img src="{{item.item_image.url|default_if_none:'#'}}">
+            {% endif %}
             <p class="lead"><a href="{{item.item_url}}">{{item.item_url}}</a></p>
             <hr class="my-2">
             
