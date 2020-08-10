@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
-    {% if request.GET.q is not '' %}
+    {% if not request.GET.q == '' %}
         <div class="row">
             <div class="col-md-8 col-sm-12 ml-auto mr-auto">
                 <h1> Search for <b>{{request.GET.q}}</b></h1>

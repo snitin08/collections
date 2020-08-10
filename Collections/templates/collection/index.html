@@ -15,15 +15,17 @@
     </div>
     {% if collection_list %}
         <div class="container" style="text-align: center;">
-            {% for collection in collection_list %}
-            
-                <div class="jumbotron item-detail" style="text-align: center; margin:10px;">
-                    <h1><a href="{% url 'collection:collection_detail' pk=collection.id %}">{{collection.name}}</a></h1>
-                    <p><a href="{% url 'collection:collection_update' pk=collection.id %}" class="btn btn-warning btn-lg">Update</a></p>
-                    <a href="{% url 'collection:collection_delete' pk=collection.id %}" class="btn btn-danger btn-lg">Delete</a>
-                </div>
-            
-            {% endfor %}
+            <div class="row" style="text-align: center;">
+                {% for collection in collection_list %}
+                
+                <div class="col-lg-3 col-md-6 col-sm-12 m-2 bg-light" style="text-align: center; margin: 10px; padding: 15px;">
+                        <h1><a href="{% url 'collection:collection_detail' pk=collection.id %}">{{collection.name}}</a></h1>
+                        <p><a href="{% url 'collection:collection_update' pk=collection.id %}" class="btn btn-warning btn-lg">Update</a></p>
+                        <a href="{% url 'collection:collection_delete' pk=collection.id %}" class="btn btn-danger btn-lg">Delete</a>
+                    </div>
+                
+                {% endfor %}
+            </div>
         </div>
     {% else %}
         <div class="jumbotron" style="text-align: center; color:red">

@@ -23,7 +23,8 @@ def collectionSearchView(request):
     query = method_dict.get('q', None) # method_dict['q']
     print(query is '')
     if query is not None:
-        collection_list = CollectionModel.objects.filter(name__icontains=query)
+        #collection_list = CollectionModel.objects.filter(name__icontains=query)
+        collection_list = CollectionModel.objects.search(query)
         return render(request,"collection/collection_search.html",{"collection_list":collection_list})
     return render(request,"collection/collection_search.html",{"collection_list":None})
 

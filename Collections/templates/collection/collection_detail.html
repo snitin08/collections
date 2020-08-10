@@ -15,10 +15,10 @@
     {% if collection_items %}
         
         <div class="container" style="text-align: center;">
-            
+            <div class="row" style="text-align: center;">
             {% for item in collection_items %}
                 
-                <div class="jumbotron item-detail" style="text-align: center; margin: 10px;">
+            <div class="col-lg-3 col-md-6 col-sm-12 m-2 bg-light" style="text-align: center; margin: 10px; padding: 15px;">
 
                     <h1><a href="{% url 'collection:item_detail' collection_id=collection.id pk=item.id %}">{{item.item_name}}</a></h1>
                     {% if item.item_image %}
@@ -34,7 +34,8 @@
                     </a>
                 </div>
                    
-        {% endfor %}
+            {% endfor %}
+            </div>
         </div>
             
         

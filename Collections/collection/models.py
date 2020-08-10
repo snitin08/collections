@@ -3,10 +3,10 @@ from django.urls import reverse
 from django.db.models import Q
 from django import forms
 # Create your models here.
-class CollectionQuerySet(models.query.QuerySet):
+class CollectionQuerySet(models.QuerySet):
     
     def search(self, query):
-        lookups = (Q(name__icontains=query)) 
+        lookups = (Q(name__icontains=query)|Q(items__item_name__icontains=query)) 
                   
         return self.filter(lookups).distinct()
 
@@ -20,7 +20,7 @@ class CollectionManager(models.Manager):
 
 class CollectionModel(models.Model):
     name = models.CharField(max_length=50)
-    
+    objects = CollectionManager()
     def get_absolute_url(self):
         return reverse("collection:collection_detail", kwargs={"pk": self.pk})
     
