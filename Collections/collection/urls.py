@@ -16,6 +16,9 @@ urlpatterns=[
     path('<int:collection_id>/item-update/<int:pk>/',views.itemUpdateView,name='item_update'),
     path('<int:collection_id>/item-delete/<int:pk>/',views.itemDeleteView,name='item_delete'),
     path('collection-search/',views.collectionSearchView,name="collection_search"),
+    path('logout/',views.user_logout,name='logout'),
+    path('login/',views.user_login,name='login'),
+    path('register/',views.register,name='register'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

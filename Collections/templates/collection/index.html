@@ -6,6 +6,7 @@
 
 {% block body_block %}
     
+    {% if user.is_authenticated %}
     <div class="container-fluid" style="text-align: center;">
         
         <a href="{% url 'collection:collection_create' %}" class="btn btn-primary">
@@ -13,7 +14,9 @@
         </a>
         
     </div>
-    {% if collection_list %}
+    {% endif %}
+
+    {% if collection_list and user.is_authenticated %}
         <div class="container" style="text-align: center;">
             <div class="row" style="text-align: center;">
                 {% for collection in collection_list %}
@@ -27,9 +30,13 @@
                 {% endfor %}
             </div>
         </div>
-    {% else %}
+    {% elif user.is_authenticated %}
         <div class="jumbotron" style="text-align: center; color:red">
             No Collections
+        </div>
+    {% else %}
+        <div class="jumbotron" style="text-align: center; color:red">
+            Please login to view your collections
         </div>
     {% endif %}
 {% endblock %}

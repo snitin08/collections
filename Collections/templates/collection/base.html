@@ -23,22 +23,31 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-1">
             <div class="container">
                 <div class="navbar-nav mr-auto">
                     <a class="navbar-brand" href="{% url 'collection:index' %}">Your Collections</a>
                     <a class="nav-item nav-link" href="#}"></a>
                     
                 </div>
+
+                {% if user.is_authenticated %}
                 <div class="text-right ml-auto">
                     <form method="GET" action="{% url 'collection:collection_search' %}" class="form-inline mr-auto float-right">
                         <input type="text" class="form-control mb-2 mr-sm-2 " name="q" placeholder="collection name" value="{{request.GET.q}}">
+                        <input type="hidden" name="user" value="{{request.user}}"/>
                         <input type="submit" class="btn btn-dark btn btn-outline-success" 
                         value="SEARCH">
                     </form>
-                </div>  
+                </div>
+                
+                    <a href="{% url 'collection:logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'collection:login' %}">Login</a>
+                    <a href="{% url 'collection:register' %}">Register</a>
+                {% endif %}
             </div>
-        </nav>
+        </nav>       
 
         {% block body_block %}
 
