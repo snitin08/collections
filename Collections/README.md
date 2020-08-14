@@ -1,4 +1,4 @@
-# Microsoft Edge collections clone
+# collections
 
 This project is a clone of the Microsoft Edge collections.
 
